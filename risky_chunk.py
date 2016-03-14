@@ -79,10 +79,10 @@ def get_weights_dict(weights_file, weights_p_value_max):
 def calculate_risk_score(chunk_path, weights_dict, n_samples):
    
     # GWAS3 files
-    RE_CHR = re.compile(r'/(\d+).gen.gz')
+    # RE_CHR = re.compile(r'/(\d+).gen.gz')
     
     # Mari's files
-    # RE_CHR = re.compile(r'/chr(\d+)/') 
+    RE_CHR = re.compile(r'/chr(\d+)/') 
     
     complement_dict = {
         'A' : 'T',

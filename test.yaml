@@ -1,5 +1,6 @@
 chunks: test/chr*/*imputed
 memory: 50
+queue: small
 weights: test/test.weights
 working-dir: test_results/
 sample-file: test/samples.fam
