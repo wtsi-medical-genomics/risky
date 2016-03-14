@@ -131,7 +131,7 @@ def calculate_risk_score(chunk_path, weights_dict, n_samples):
             continue
         k = (chromosome, pos)
         print k
-        if (k) in weights_dict:
+        if k in weights_dict:
             v = weights_dict[k]
             pprint(v)
             genotypes = np.array(line_split[5:], dtype= float)
