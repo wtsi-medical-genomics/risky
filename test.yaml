@@ -1,0 +1,6 @@
+chunks: test/chr*/*imputed
+memory: 50
+weights: test/test.weights
+working-dir: test_results/
+sample-file: test/samples.fam
+weights-p-value-max: 1
