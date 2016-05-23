@@ -43,10 +43,11 @@ def get_weights_dict(weights_file, weights_p_value_max):
         line_split = [el.strip() for el in line.split()]
         chrom, pos, effect_allele, alt_allele, reference_allele, beta, pvalue, rsid = line_split
         pvalue = float(pvalue)
-        beta = float(beta)
 
         if pvalue > weights_p_value_max:
             continue
+        
+        beta = float(beta)
 
         assert effect_allele == reference_allele
 
@@ -79,10 +80,10 @@ def get_weights_dict(weights_file, weights_p_value_max):
 def calculate_risk_score(chunk_path, weights_dict, n_samples):
    
     # GWAS3 files
-    # RE_CHR = re.compile(r'/(\d+).gen.gz')
+    RE_CHR = re.compile(r'/(\d+).gen.gz')
     
     # Mari's files
-    RE_CHR = re.compile(r'/chr(\d+)/') 
+    # RE_CHR = re.compile(r'/chr(\d+)/') 
     
     complement_dict = {
         'A' : 'T',
