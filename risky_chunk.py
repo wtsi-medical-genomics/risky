@@ -20,7 +20,9 @@ from pprint import pprint
 
 # RE_CHR = re.compile(r'/chr(\d+)/')
 
-def get_weights_dict(weights_file, weights_p_value_max):
+def get_weights_dict(weights_file, weights_p_value_max, extract_file=None):
+      
+
     weights_dict = {}
     dup_count = 0
     duplicates_out = weights_file +'.duplicates'
@@ -38,10 +40,20 @@ def get_weights_dict(weights_file, weights_p_value_max):
     else:
         raise Exception('Attempted to read {} times but failed each time so exiting.'.format(attempt + 1))
 
+    if extract_file:
+        # Create a extract_dict by iterating over the lines of extract_file
+        # each line will need to be split on a set character eg :-,space
+
     duplicates = []
     for i, line in enumerate(weights_file_contents[1:]):
         line_split = [el.strip() for el in line.split()]
         chrom, pos, effect_allele, alt_allele, reference_allele, beta, pvalue, rsid = line_split
+        
+        if extract_file:
+            # test for presence in extract_dict
+            # if (chrom, pos) not in extract_dict:
+            #   continue
+
         pvalue = float(pvalue)
 
         if pvalue > weights_p_value_max:
